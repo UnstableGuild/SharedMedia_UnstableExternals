@@ -1,0 +1,12 @@
+package-as: SharedMedia_Externals
+
+# No externals: LibSharedMedia-3.0 comes from the standalone SharedMedia addon,
+# which ## Dependencies makes a hard requirement. One shared copy rather than an
+# embedded one per addon.
+enable-nolib-creation: no
+
+ignore:
+  - ".github/"
+  - ".gitignore"
+  - ".pre-commit-config.yaml"
+  - "PROMPT.md"

@@ -1,0 +1,44 @@
+name: Create Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      # Version follows the conventional commit type of the squash-merge message:
+      # feat -> minor, fix/refactor/chore/docs/perf/style/test/ci/build -> patch,
+      # trailing '!' or 'BREAKING CHANGE:' -> major. `increment` is the fallback
+      # used only when that parse finds nothing.
+      - name: Get next version
+        uses: reecetech/version-increment@28d33de033e97a304f77238d6a5db26039ca15d6 # 2026.8.4
+        id: version
+        with:
+          scheme: conventional_commits
+          increment: patch
+          release_branch: main
+
+      - name: Build changelog
+        id: changelog
+        run: |
+          {
+            echo "body<<EOF"
+            cat CHANGELOG.md
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Publish release
+        uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
+        with:
+          token: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+          tag_name: ${{ steps.version.outputs.v-version }}
+          name: ${{ steps.version.outputs.v-version }}
+          body: ${{ steps.changelog.outputs.body }}

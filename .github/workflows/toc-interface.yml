@@ -1,0 +1,47 @@
+# The packager substitutes @project-version@ for Version, but nothing touches
+# Interface, so it silently went stale from 12.0.1 through to 12.1. This is the
+# same approach oUF and XIV_Databar-Continued use: check weekly and raise a PR,
+# so the bump is reviewed and tested rather than pushed straight to main (a push
+# to main cuts a release).
+name: Update TOC Interface version
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 12 * * 1"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: p3lim/toc-interface-updater@c6fc069f6b94aaa1b7918872c889c6c27bbb8066 # v4.15
+        with:
+          flavor: retail
+          beta: false
+          ptr: false
+
+      # GITHUB_TOKEN is enough here -- the org now allows Actions to open pull
+      # requests. release.yml still needs the personal token, for an unrelated
+      # reason: GitHub suppresses workflow triggers from GITHUB_TOKEN-created
+      # events, so a release published with it would never fire package.yml.
+      #
+      # Conventional prefix on purpose: release.yml reads the squash-merge
+      # message to decide the version, so an unprefixed title would be guesswork.
+      - uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: "chore: update TOC interface version"
+          commit-message: "chore: update TOC interface version"
+          body: |
+            Raised automatically by the weekly TOC interface check.
+
+            Merge only after confirming the addon loads on the version being
+            targeted; merging cuts a release.
+          branch: automation/interface-version
+          delete-branch: true

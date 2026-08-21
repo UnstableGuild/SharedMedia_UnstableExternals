@@ -1,0 +1,15 @@
+version: 2
+
+updates:
+  # Actions are pinned to commit SHAs, which does not expire on its own.
+  # Dependabot rewrites the SHA and its version comment so the pins stay current.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: ci
+    groups:
+      github-actions:
+        patterns:
+          - "*"
