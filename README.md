@@ -77,4 +77,7 @@ ffmpeg -y -i in.wav -ac 1 -ar 44100 \
   -c:a libvorbis -q:a 4 "out.ogg"
 ```
 
-`PROMPT.md` carries the full build spec and rationale.
+`libvorbis` is required. ffmpeg's built-in `vorbis` encoder is experimental and
+audibly worse, and Homebrew's ffmpeg ships without libvorbis — so on a Mac this
+runs in a container (`docker run --rm -v "$PWD":/w -w /w alpine:3.20 sh -c 'apk
+add --no-cache ffmpeg && ...'`) rather than natively.

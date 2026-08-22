@@ -16,4 +16,3 @@ ignore:
   - ".github/"
   - ".gitignore"
   - ".pre-commit-config.yaml"
-  - "PROMPT.md"
