@@ -1,5 +1,5 @@
 -- SharedMedia_Externals
--- Registers ten TTS callouts of external defensive cooldowns with
+-- Registers eight TTS callouts of external defensive cooldowns with
 -- LibSharedMedia-3.0, so any addon's sound dropdown can use them. Pair with
 -- something that plays a sound on aura gain (NorthernSkyRaidTools' Aura
 -- Sounds) to hear which external you were just given without looking.
@@ -22,8 +22,6 @@ local sounds = {
     ["Ext: Ironbark"]                 = "Ironbark.ogg",
     ["Ext: Life Cocoon"]              = "Life Cocoon.ogg",
     ["Ext: Pain Suppression"]         = "Pain Suppression.ogg",
-    ["Ext: Roar of Sacrifice"]        = "Roar of Sacrifice.ogg",
-    ["Ext: Sacrifice of the Just"]    = "Sacrifice of the Just.ogg",
     ["Ext: Time Dilation"]            = "Time Dilation.ogg",
 }
 

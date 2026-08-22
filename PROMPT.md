@@ -19,7 +19,7 @@ path literal, and the loud `LibStub()` call.
 ## What to build
 
 A World of Warcraft **retail** addon named `SharedMedia_Externals` that does one
-thing: register ten `.ogg` files with LibSharedMedia-3.0 so any addon's sound
+thing: register eight `.ogg` files with LibSharedMedia-3.0 so any addon's sound
 dropdown can use them.
 
 They are text-to-speech callouts of external defensive cooldowns — the spells
@@ -37,7 +37,7 @@ already pointing at these names breaks if they change.
 SharedMedia_Externals/
     SharedMedia_Externals.toc      <- create
     Externals.lua                  <- create
-    sound/                         <- already here, 10 files, do not touch
+    sound/                         <- already here, do not touch
         Blessing of Protection.ogg
         Blessing of Sacrifice.ogg
         Blessing of Spellwarding.ogg
@@ -45,8 +45,6 @@ SharedMedia_Externals/
         Ironbark.ogg
         Life Cocoon.ogg
         Pain Suppression.ogg
-        Roar of Sacrifice.ogg
-        Sacrifice of the Just.ogg
         Time Dilation.ogg
 ```
 
@@ -92,8 +90,6 @@ local sounds = {
     ["Ext: Ironbark"]                 = "Ironbark.ogg",
     ["Ext: Life Cocoon"]              = "Life Cocoon.ogg",
     ["Ext: Pain Suppression"]         = "Pain Suppression.ogg",
-    ["Ext: Roar of Sacrifice"]        = "Roar of Sacrifice.ogg",
-    ["Ext: Sacrifice of the Just"]    = "Sacrifice of the Just.ogg",
     ["Ext: Time Dilation"]            = "Time Dilation.ogg",
 }
 
@@ -108,7 +104,11 @@ invalid escape.
 
 ## Spell IDs, for whatever consumes these
 
-Ten abilities, eleven IDs — Blessing of Protection has two.
+Eight abilities, nine IDs — Blessing of Protection has two.
+
+Roar of Sacrifice (53480) and Echoing Protection (387804) were dropped in 2.0.0:
+neither lands on a tank in practice, and 387804 had been mislabelled here as
+"Sacrifice of the Just", a name that matches no spell.
 
 | Ability | Spell ID |
 | --- | --- |
@@ -119,8 +119,6 @@ Ten abilities, eleven IDs — Blessing of Protection has two.
 | Ironbark | 102342 |
 | Life Cocoon | 116849 |
 | Pain Suppression | 33206 |
-| Roar of Sacrifice | 53480 |
-| Sacrifice of the Just | 387804 |
 | Time Dilation | 357170 |
 
 ## Three things that will waste an afternoon

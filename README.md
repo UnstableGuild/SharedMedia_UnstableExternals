@@ -1,7 +1,7 @@
 # SharedMedia_UnstableExternals
 
 Text-to-speech callouts for external defensive cooldowns — the spells another
-player casts on *you*. Registers ten sounds with LibSharedMedia-3.0 so they show
+player casts on *you*. Registers eight sounds with LibSharedMedia-3.0 so they show
 up in any addon's sound dropdown.
 
 Pair it with something that plays a sound on aura gain (NorthernSkyRaidTools'
@@ -31,7 +31,7 @@ likely reason it appears not to work — the sounds are simply never registered.
 
 ## Sounds
 
-All ten register as `Ext: <ability>`. The prefix keeps them together in
+All eight register as `Ext: <ability>`. The prefix keeps them together in
 dropdowns that are otherwise alphabetical soup.
 
 | Sound | Ability | Spell ID |
@@ -43,8 +43,6 @@ dropdowns that are otherwise alphabetical soup.
 | Ext: Ironbark | Ironbark | 102342 |
 | Ext: Life Cocoon | Life Cocoon | 116849 |
 | Ext: Pain Suppression | Pain Suppression | 33206 |
-| Ext: Roar of Sacrifice | Roar of Sacrifice | 53480 |
-| Ext: Sacrifice of the Just | Sacrifice of the Just | 387804 |
 | Ext: Time Dilation | Time Dilation | 357170 |
 
 The registered **name** is what other addons save, so it is a stable
