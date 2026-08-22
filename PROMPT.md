@@ -1,7 +1,18 @@
 # Build prompt: SharedMedia_Externals
 
-Hand this whole folder to whoever (or whatever) is building the addon. The audio
-is already made; only two text files are missing.
+The original build spec, kept for the audio provenance and the spell IDs. The
+addon was built from it and then diverged in four places -- the shipped files
+are the source of truth, not this document:
+
+| This spec says | Shipped | Why |
+| --- | --- | --- |
+| `SharedMedia_Externals` | `SharedMedia_UnstableExternals` | Guild naming; the folder name is baked into the media path, so it had to change before anyone installed it |
+| `## Dependencies: SharedMedia` | LibSharedMedia-3.0 embedded | The consumers embed LSM rather than installing the standalone SharedMedia addon -- NorthernSkyRaidTools included -- so a hard dependency blocked loading for the intended audience |
+| `## Version: 1.0` | `@project-version@` | Substituted from the git tag by the BigWigs packager |
+| `## Interface: 120007, 120100` | `120100` | Single live build, kept current by the weekly toc-interface workflow |
+
+Unchanged and deliberate: the `Ext:` prefix on registered names, the `[[...]]`
+path literal, and the loud `LibStub()` call.
 
 ---
 
