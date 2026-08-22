@@ -1,8 +1,15 @@
-package-as: SharedMedia_Externals
+package-as: SharedMedia_UnstableExternals
 
-# No externals: LibSharedMedia-3.0 comes from the standalone SharedMedia addon,
-# which ## Dependencies makes a hard requirement. One shared copy rather than an
-# embedded one per addon.
+# LibSharedMedia-3.0 is embedded rather than required as the standalone
+# SharedMedia addon. The addons that consume these sounds -- NorthernSkyRaidTools
+# above all -- embed LSM themselves and do not install SharedMedia, so a hard
+# dependency on it would stop this loading for exactly the people it is for.
+# LibStub arbitrates: whichever copy loads first wins and the rest no-op.
+externals:
+  libs/LibStub: https://repos.wowace.com/wow/ace3/trunk/LibStub
+  libs/CallbackHandler-1.0: https://repos.wowace.com/wow/ace3/trunk/CallbackHandler-1.0
+  libs/LibSharedMedia-3.0: https://repos.wowace.com/wow/libsharedmedia-3-0/trunk/LibSharedMedia-3.0
+
 enable-nolib-creation: no
 
 ignore:

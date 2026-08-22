@@ -10,7 +10,7 @@
 
 local LSM = LibStub("LibSharedMedia-3.0")
 
-local PATH = [[Interface\AddOns\SharedMedia_Externals\sound\]]
+local PATH = [[Interface\AddOns\SharedMedia_UnstableExternals\sound\]]
 
 -- Registered name -> filename. The NAME is what other addons store, so it is a
 -- stable identifier: renaming one silently breaks every saved reference to it.

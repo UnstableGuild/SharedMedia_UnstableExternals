@@ -1,4 +1,4 @@
-# SharedMedia_Externals
+# SharedMedia_UnstableExternals
 
 Text-to-speech callouts for external defensive cooldowns — the spells another
 player casts on *you*. Registers ten sounds with LibSharedMedia-3.0 so they show
@@ -10,16 +10,17 @@ without having to look.
 
 ## Requirements
 
-**[SharedMedia](https://www.curseforge.com/wow/addons/sharedmedia) must be
-installed.** It is a hard dependency: without it this addon will not load at
-all, and the AddOns list will say "Dependencies missing".
+None. LibSharedMedia-3.0 is bundled, so it works whether or not you run the
+standalone SharedMedia addon. If something else already loaded LSM -- NSRT,
+ElvUI, WeakAuras -- LibStub keeps whichever copy came first and the bundled one
+stands down.
 
 ## Install
 
 In WowUp, *Get Addons* → *Install from URL*, and paste:
 
 ```
-https://github.com/UnstableGuild/SharedMedia_Externals
+https://github.com/UnstableGuild/SharedMedia_UnstableExternals
 ```
 
 WowUp tracks GitHub releases, so it will offer updates from then on.
@@ -60,8 +61,8 @@ not tell you where the break is. Check registration first:
 ```
 
 A file path means it is registered, and the problem is downstream in whatever
-was supposed to play it. `nil` means this addon is not enabled, SharedMedia is
-missing, or the name is misspelled.
+was supposed to play it. `nil` means this addon is not enabled, or the name is
+misspelled.
 
 ## Audio
 

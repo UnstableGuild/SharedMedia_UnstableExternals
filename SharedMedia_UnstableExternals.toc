@@ -1,8 +1,8 @@
 ## Interface: 120100
-## Title: SharedMedia_Externals
+## Title: SharedMedia_UnstableExternals
 ## Notes: TTS callouts for external defensive cooldowns.
 ## Author: UnstableGuild
 ## Version: @project-version@
-## Dependencies: SharedMedia
 
+libs\Libs.xml
 Externals.lua
