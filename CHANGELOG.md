@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.0
+- Registers DBM's `dontdie.ogg` as `DBM: Don't Die`, so it can be picked in any sound dropdown. DBM ships the clip but never registers it with LibSharedMedia
+- The file is referenced where DBM already keeps it rather than copied in, and only registers when DBM is installed
+
 ## 2.0.0
 - Removed `Ext: Roar of Sacrifice` and `Ext: Sacrifice of the Just`. Neither lands on a tank in practice, and the second was mislabelled: spell 387804 is Echoing Protection, so that callout spoke a name belonging to no spell
 - **Breaking.** If you had either selected in NSRT or anywhere else, that reference now resolves to nothing and fails silently. Clear it and pick a replacement, or nothing plays

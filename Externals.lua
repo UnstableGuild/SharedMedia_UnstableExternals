@@ -28,3 +28,15 @@ local sounds = {
 for name, file in pairs(sounds) do
     LSM:Register("sound", name, PATH .. file)
 end
+
+-- Deadly Boss Mods ships sound clips it never registers with LibSharedMedia, so
+-- nothing can select them. Point at the file where it already sits rather than
+-- copying it: this repo is public, and the audio is DBM's, not ours.
+--
+-- Guarded on the addon existing so the dropdown never offers an entry that
+-- resolves to a missing file -- an unresolvable sound plays nothing and says
+-- nothing, which is the hardest kind of break to trace.
+if C_AddOns and C_AddOns.DoesAddOnExist and C_AddOns.DoesAddOnExist("DBM-Core") then
+    LSM:Register("sound", "DBM: Don't Die",
+        [[Interface\AddOns\DBM-Core\sounds\SoundClips\dontdie.ogg]])
+end

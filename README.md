@@ -48,6 +48,20 @@ dropdowns that are otherwise alphabetical soup.
 The registered **name** is what other addons save, so it is a stable
 identifier. Renaming one silently breaks every saved reference to it.
 
+## DBM sound clips
+
+DBM ships a handful of sound clips it never registers with LibSharedMedia, so
+nothing can select them. This addon registers one:
+
+| Sound | File |
+| --- | --- |
+| DBM: Don't Die | `DBM-Core\sounds\SoundClips\dontdie.ogg` |
+
+It is a **pointer, not a copy** — the file stays in DBM's folder and is not
+redistributed here. It only registers when DBM is installed, so it will not
+appear in the dropdown otherwise. `beware.ogg`, `beware_with_reverb.ogg` and
+`incredible.ogg` sit alongside it and can be added the same way.
+
 ## If you get no sound
 
 Failure is silent by design: a consumer looks the sound up by name, an
