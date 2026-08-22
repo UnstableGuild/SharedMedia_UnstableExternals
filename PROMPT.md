@@ -151,8 +151,19 @@ Windows SAPI (`System.Speech.Synthesis`), voice **Microsoft Zira Desktop**,
 rate 1, spoken as the full ability name. Encoded with ffmpeg to Ogg Vorbis,
 mono, 44.1 kHz, quality 4. Roughly 9-13 KB and 1.4-2.1 seconds each.
 
+Levelled after synthesis: SAPI output sits around -22 dB mean, which is quiet
+against raid noise. `speechnorm` lifts it about 5 dB and `alimiter` holds the
+ceiling, landing every file within 0.2 dB of the same peak instead of the 1.6 dB
+spread they had raw.
+
 To regenerate at a different voice or speed, synthesize to WAV and convert:
 
 ```
-ffmpeg -y -i in.wav -ac 1 -ar 44100 -c:a libvorbis -q:a 4 "out.ogg"
+ffmpeg -y -i in.wav -ac 1 -ar 44100 \
+  -af "speechnorm=e=6:r=0.0005:l=1,alimiter=limit=0.85:level=disabled" \
+  -c:a libvorbis -q:a 4 "out.ogg"
 ```
+
+`libvorbis` is required -- ffmpeg's built-in `vorbis` encoder is experimental and
+audibly worse. Homebrew's ffmpeg on this machine ships without libvorbis, so the
+levelling pass ran in an Alpine container (`apk add ffmpeg`).

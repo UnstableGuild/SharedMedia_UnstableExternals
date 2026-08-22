@@ -68,12 +68,15 @@ misspelled.
 
 Windows SAPI (`System.Speech.Synthesis`), voice Microsoft Zira Desktop, rate 1,
 spoken as the full ability name. Ogg Vorbis, mono, 44.1 kHz, quality 4 —
-roughly 9-13 KB and 1.4-2.1 seconds each.
+roughly 9-14 KB and 1.4-2.1 seconds each, levelled so they carry over raid
+noise and all sit at the same peak.
 
 To regenerate at a different voice or speed, synthesize to WAV and convert:
 
 ```
-ffmpeg -y -i in.wav -ac 1 -ar 44100 -c:a libvorbis -q:a 4 "out.ogg"
+ffmpeg -y -i in.wav -ac 1 -ar 44100 \
+  -af "speechnorm=e=6:r=0.0005:l=1,alimiter=limit=0.85:level=disabled" \
+  -c:a libvorbis -q:a 4 "out.ogg"
 ```
 
 `PROMPT.md` carries the full build spec and rationale.
