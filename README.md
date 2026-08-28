@@ -1,8 +1,8 @@
 # SharedMedia_UnstableExternals
 
-Text-to-speech callouts for external defensive cooldowns — the spells another
-player casts on *you*. Registers eight sounds with LibSharedMedia-3.0 so they show
-up in any addon's sound dropdown.
+Text-to-speech callouts for external cooldowns — the spells another player
+casts on *you*. Registers nine sounds with LibSharedMedia-3.0 so they show up in
+any addon's sound dropdown.
 
 Pair it with something that plays a sound on aura gain (NorthernSkyRaidTools'
 Aura Sounds, for example) and you hear which external you were just given
@@ -31,8 +31,12 @@ likely reason it appears not to work — the sounds are simply never registered.
 
 ## Sounds
 
-All eight register as `Ext: <ability>`. The prefix keeps them together in
+All nine register as `Ext: <ability>`. The prefix keeps them together in
 dropdowns that are otherwise alphabetical soup.
+
+They are not all *defensive*: Power Infusion is a throughput buff. What they
+have in common is that someone else casts them on you, which is the whole point
+of hearing which one you just got.
 
 | Sound | Ability | Spell ID |
 | --- | --- | --- |
@@ -43,6 +47,7 @@ dropdowns that are otherwise alphabetical soup.
 | Ext: Ironbark | Ironbark | 102342 |
 | Ext: Life Cocoon | Life Cocoon | 116849 |
 | Ext: Pain Suppression | Pain Suppression | 33206 |
+| Ext: Power Infusion | Power Infusion | 10060 |
 | Ext: Time Dilation | Time Dilation | 357170 |
 
 The registered **name** is what other addons save, so it is a stable
@@ -92,6 +97,9 @@ ffmpeg -y -i in.wav -ac 1 -ar 44100 \
 ```
 
 `libvorbis` is required. ffmpeg's built-in `vorbis` encoder is experimental and
-audibly worse, and Homebrew's ffmpeg ships without libvorbis — so on a Mac this
-runs in a container (`docker run --rm -v "$PWD":/w -w /w alpine:3.20 sh -c 'apk
-add --no-cache ffmpeg && ...'`) rather than natively.
+audibly worse. The winget build of ffmpeg on Windows has it; Homebrew's on macOS
+does not, so on a Mac this runs in a container (`docker run --rm -v "$PWD":/w -w
+/w alpine:3.20 sh -c 'apk add --no-cache ffmpeg && ...'`) rather than natively.
+
+Synthesis is Windows-only in practice — Zira Desktop does not exist on macOS, and
+one mismatched voice in a matched set is worse than a missing callout.

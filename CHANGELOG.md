@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.2.0
+- New callout `Ext: Power Infusion` (spell 10060), same voice, rate and levelling as the other eight
+- Dropped "defensive" from the TOC notes and the README. Power Infusion is a throughput buff; what the set has in common is that someone else casts it on you, which is what you want to hear. No registered name changed, so nothing saved elsewhere breaks
+
 ## 2.1.0
 - Registers DBM's `dontdie.ogg` as `DBM: Don't Die`, so it can be picked in any sound dropdown. DBM ships the clip but never registers it with LibSharedMedia
 - The file is referenced where DBM already keeps it rather than copied in, and only registers when DBM is installed

@@ -1,8 +1,11 @@
 -- SharedMedia_Externals
--- Registers eight TTS callouts of external defensive cooldowns with
--- LibSharedMedia-3.0, so any addon's sound dropdown can use them. Pair with
--- something that plays a sound on aura gain (NorthernSkyRaidTools' Aura
--- Sounds) to hear which external you were just given without looking.
+-- Registers nine TTS callouts of external cooldowns with LibSharedMedia-3.0,
+-- so any addon's sound dropdown can use them. Pair with something that plays a
+-- sound on aura gain (NorthernSkyRaidTools' Aura Sounds) to hear which external
+-- you were just given without looking.
+--
+-- "External" here means cast on you by someone else, not defensive: Power
+-- Infusion is a throughput buff and belongs for the same reason the rest do.
 --
 -- LibStub is fetched loudly on purpose. Everything downstream of a missing
 -- registration fails silently -- a consumer looking the name up gets nil and
@@ -22,6 +25,7 @@ local sounds = {
     ["Ext: Ironbark"]                 = "Ironbark.ogg",
     ["Ext: Life Cocoon"]              = "Life Cocoon.ogg",
     ["Ext: Pain Suppression"]         = "Pain Suppression.ogg",
+    ["Ext: Power Infusion"]           = "Power Infusion.ogg",
     ["Ext: Time Dilation"]            = "Time Dilation.ogg",
 }
 
