@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - uses: p3lim/toc-interface-updater@c6fc069f6b94aaa1b7918872c889c6c27bbb8066 # v4.15
+      - uses: p3lim/toc-interface-updater@d90fea4d68106db10669c83b892940b7428f1473 # v4.16
         with:
           flavor: retail
           beta: false
